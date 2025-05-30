@@ -6,8 +6,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/imc")
 public class IMCController {
  
-    @GetMapping
-    public IMCResponse calcularIMC(@RequestParam double peso, @RequestParam double altura) {
+    @PostMapping
+    public IMCResponse calcularIMC(@RequestBody IMCRequest request) {
+        double peso = request.getPeso();
+        double altura = request.getAltura();
+ 
         double imc = peso / (altura * altura);
         String classificacao;
  
